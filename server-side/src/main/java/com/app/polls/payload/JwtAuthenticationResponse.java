@@ -4,8 +4,17 @@ public class JwtAuthenticationResponse {
     private String accessToken;
     private String tokenType = "Bearer";
     private boolean result = true;
+    private String UsernameOrEmail;
 
-    public boolean isResult() {
+    public String getUsernameOrEmail() {
+		return UsernameOrEmail;
+	}
+
+	public void setUsernameOrEmail(String usernameOrEmail) {
+		this.UsernameOrEmail = usernameOrEmail;
+	}
+
+	public boolean isResult() {
 		return result;
 	}
 
@@ -13,8 +22,9 @@ public class JwtAuthenticationResponse {
 		this.result = result;
 	}
 
-	public JwtAuthenticationResponse(String accessToken) {
+	public JwtAuthenticationResponse(String accessToken,String UsernameOrEmail) {
         this.accessToken = accessToken;
+        this.UsernameOrEmail = UsernameOrEmail;
     }
 
     public String getAccessToken() {
