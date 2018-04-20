@@ -1,0 +1,80 @@
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+
+    <div class="card">
+
+      <div class="card-body">
+        <h5>Register</h5>
+        <!-- Login Form -->
+        <form [formGroup]="signUpForm" (submit)="onRegisterSubmit()" class="was-validated">
+
+          <!-- Name Field -->
+          <div class="form-group">
+            <label for="name">Name</label>
+
+            <div [ngClass]="{'has-danger': (signUpForm.controls.name.errors && signUpForm.controls.name.dirty) , 'has-success': !signUpForm.controls.name.errors}">
+              <input type="text" name="name" class="form-control" autocomplete="off" placeholder="*Name" formControlName="name" />
+              <!-- Validation -->
+              <ul class="help-block">
+                <li *ngIf="signUpForm.controls.name.errors?.required && signUpForm.controls.name.dirty">This field is required</li>
+                <li *ngIf="(signUpForm.controls.name.errors?.minlength && signUpForm.controls.email.dirty || signUpForm.controls.name.errors?.maxlength && signUpForm.controls.name.dirty ) && signUpForm.controls.name.dirty">Minimum characters: 5, Maximum characters: 30</li>
+                <li *ngIf="signUpForm.controls.name.errors?.validateEmail && signUpForm.controls.name.dirty">This must be a valid e-mail</li>
+                <!-- <li *ngIf="emailMessage">{{ emailMessage}}</li> -->
+              </ul>
+            </div>
+          </div>
+          <!-- Username Field -->
+          <div class="form-group">
+            <label for="name">Username</label>
+            <div [ngClass]="{'has-danger': (signUpForm.controls.username.errors && signUpForm.controls.username.dirty) , 'has-success': !signUpForm.controls.username.errors}">
+              <input type="text" name="username" class="form-control" autocomplete="off" placeholder="*Username" formControlName="username"
+              />
+              <!-- Validation -->
+              <ul class="help-block">
+                <li *ngIf="signUpForm.controls.username.errors?.required && signUpForm.controls.username.dirty">This field is required</li>
+                <li *ngIf="(signUpForm.controls.username.errors?.minlength && signUpForm.controls.username.dirty || signUpForm.controls.username.errors?.maxlength && signUpForm.controls.username.dirty ) && signUpForm.controls.username.dirty">Minimum characters: 5, Maximum characters: 30</li>
+
+                <!-- <li *ngIf="emailMessage">{{ emailMessage}}</li> -->
+              </ul>
+            </div>
+          </div>
+          <!-- Email Field -->
+          <div class="form-group">
+            <label for="email">Email</label>
+            <div [ngClass]="{'has-error': (signUpForm.controls.email.errors && signUpForm.controls.email.dirty) , 'has-success': !signUpForm.controls.email.errors}">
+              <input type="text" name="email" class="form-control" autocomplete="off" placeholder="*Email" formControlName="email" />
+              <!-- Validation -->
+              <ul class="help-block">
+                <li *ngIf="signUpForm.controls.email.errors?.required && signUpForm.controls.email.dirty">This field is required</li>
+                <li *ngIf="(signUpForm.controls.email.errors?.minlength && signUpForm.controls.email.dirty || signUpForm.controls.email.errors?.maxlength && signUpForm.controls.email.dirty ) && signUpForm.controls.email.dirty">Minimum characters: 5, Maximum characters: 30</li>
+                <li *ngIf="signUpForm.controls.email.errors?.validateEmail && signUpForm.controls.email.dirty">This must be a valid e-mail</li>
+                <!-- <li *ngIf="emailMessage">{{ emailMessage}}</li> -->
+              </ul>
+            </div>
+          </div>
+          <!-- Password Field  -->
+          <div class="form-group">
+            <label for="password">Password</label>
+            <div [ngClass]="{'has-error': (signUpForm.controls.password.errors && signUpForm.controls.password.dirty) , 'has-success': !signUpForm.controls.password.errors}">
+              <input type="password" name="password" class="form-control" autocomplete="off" placeholder="*Password" formControlName="password"
+              />
+              <!-- Validation -->
+              <ul class="help-block">
+                <li *ngIf="signUpForm.controls.password.errors?.required && signUpForm.controls.password.dirty">This field is required</li>
+                <li *ngIf="(signUpForm.controls.password.errors?.minlength && signUpForm.controls.password.dirty || signUpForm.controls.password.errors?.maxlength && signUpForm.controls.password.dirty ) && signUpForm.controls.password.dirty">Minimum characters: 6, Maximum characters: 30</li>
+
+                <!-- <li *ngIf="emailMessage">{{ emailMessage}}</li> -->
+              </ul>
+            </div>
+          </div>
+          <!-- Submit Button -->
+          <input class="btn btn-primary" [disabled]="!signUpForm.valid" type="submit" value="Register" />
+        </form>
+        <p class="float-right">Already an account <a [routerLink]="'/login'">Sign in</a></p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
